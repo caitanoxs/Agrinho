@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interdependência Econômica: Áreas Rurais e Urbanas</title>
+    <style>
+        /* Variáveis CSS */
+        :root {
+            /* Cores para áreas rurais */
+            --rural-primary: #3e8914;
+            --rural-secondary: #5baa32;
+            --rural-light: #c8e6c9;
+            --rural-dark: #285c0b;
+            
+            /* Cores para áreas urbanas */
+            --urban-primary: #546e7a;
+            --urban-secondary: #78909c;
+            --urban-light: #cfd8dc;
+            --urban-dark: #37474f;
+            
+            /* Cores neutras */
+            --neutral-primary: #444444;
+            --neutral-secondary: #666666;
+            --neutral-light: #f5f5f5;
+            --neutral-dark: #212121;
+            
+            /* Espaçamentos */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2.5rem;
+            
+            /* Fontes */
+            --font-base: 1rem;
+            --font-small: 0.875rem;
+            --font-large: 1.25rem;
+            --font-xl: 1.5rem;
+            --font-xxl: 2rem;
+        }
+
+        /* Reset e Estilos Básicos */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--neutral-primary);
+            background-color: var(--neutral-light);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-md);
+        }
+
+        h1, h2, h3, h4 {
+            margin-bottom: var(--space-md);
+            line-height: 1.2;
+        }
+
+        p {
+            margin-bottom: var(--space-md);
+        }
+
+        ul {
+            margin-left: var(--space-lg);
+            margin-bottom: var(--space-md);
+        }
+
+        /* Cabeçalho */
+        header {
+            background: linear-gradient(to right, var(--rural-primary), var(--urban-primary));
+            color: white;
+            padding: var(--space-lg) 0;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: var(--font-xxl);
+            margin-bottom: var(--space-xs);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        header h2 {
+            font-size: var(--font-xl);
+            font-weight: 400;
+            margin-bottom: var(--space-lg);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 var(--space-md);
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: var(--font-base);
+            padding: var(--space-sm) var(--space-md);
+            border-radius: 20px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Seções */
+        .section {
+            padding: var(--space-xl) 0;
+            scroll-margin-top: 80px;
+        }
+
+        .section:nth-child(odd) {
+            background-color: white;
+        }
+
+        .section h2 {
+            font-size: var(--font-xl);
+            color: var(--neutral-dark);
+            text-align: center;
+            margin-bottom: var(--space-lg);
+            position: relative;
+        }
+
+        .section h2:after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--rural-primary), var(--urban-primary));
+            margin: var(--space-sm) auto 0;
+        }
+
+        .content-box {
+            background-color: white;
+            padding: var(--space-lg);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Colunas */
+        .columns {
+            display: flex;
+            gap: var(--space-lg);
+            margin: var(--space-lg) 0;
+            flex-wrap: wrap;
+        }
+
+        .column {
+            flex: 1;
+            min-width: 250px;
+            padding: var(--space-lg);
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .column:hover {
+            transform: translateY(-5px);
+        }
+
+        .rural-box {
+            background-color: var(--rural-light);
+            border-left: 4px solid var(--rural-primary);
+        }
+
+        .urban-box {
+            background-color: var(--urban-light);
+            border-left: 4px solid var(--urban-primary);
+        }
+
+        .column h3 {
+            color: var(--neutral-dark);
+            margin-bottom: var(--space-md);
+            position: relative;
+        }
+
+        .rural-box h3 {
+            color: var(--rural-dark);
+        }
+
+        .urban-box h3 {
+            color: var(--urban-dark);
+        }
+
+        .icon-container {
+            text-align: center;
+            margin-top: var(--space-lg);
+        }
+
+        .icon {
+            width: 80px;
+            height: 80px;
+            opacity: 0.7;
+        }
+
+        /* Destaques */
+        .highlight {
+            background-color: var(--rural-light);
+            padding: var(--space-md);
+            border-radius: 4px;
+            font-weight: 500;
+            border-left: 4px solid var(--rural-primary);
+        }
+
+        /* Abas e conteúdo */
+        .tab-section {
+            margin-top: var(--space-lg);
+        }
+
+        .tab-header {
+            display: flex;
+            border-bottom: 1px solid var(--neutral-light);
+            margin-bottom: var(--space-md);
+        }
+
+        .tab-title {
+            padding: var(--space-md) var(--space-lg);
+            font-weight: 600;
+            color: var(--neutral-primary);
+            border-bottom: 3px solid transparent;
+        }
+
+        .rural-tab {
+            color: var(--rural-primary);
+            border-bottom-color: var(--rural-primary);
+        }
+
+        .urban-tab {
+            color: var(--urban-primary);
+        }
+
+        .tab-content {
+            padding: var(--space-md) 0;
+        }
+
+        .feature-list {
+            list-style-type: none;
+            margin-left: 0;
+        }
+
+        .feature-list li {
+            padding: var(--space-sm) 0;
+            margin-bottom: var(--space-sm);
+            padding-left: var(--space-lg);
+            position: relative;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            color: var(--rural-primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Diagrama */
+        .diagram-container {
+            margin: var(--space-lg) 0;
+        }
+
+        .diagram {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-lg);
+            flex-wrap: wrap;
+        }
+
+        .rural-area, .urban-area {
+            background-color: white;
+            padding: var(--space-lg);
+            border-radius: 8px;
+            flex: 1;
+            min-width: 250px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .rural-area {
+            border-top: 4px solid var(--rural-primary);
+        }
+
+        .urban-area {
+            border-top: 4px solid var(--urban-primary);
+        }
+
+        .rural-area h3, .urban-area h3 {
+            text-align: center;
+            margin-bottom: var(--space-lg);
+        }
+
+        .rural-area h3 {
+            color: var(--rural-primary);
+        }
+
+        .urban-area h3 {
+            color: var(--urban-primary);
+        }
+
+        .resources {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .resource {
+            padding: var(--space-sm) var(--space-md);
+            border-radius: 4px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .rural-area .resource {
+            background-color: var(--rural-light);
+            color: var(--rural-dark);
+        }
+
+        .urban-area .resource {
+            background-color: var(--urban-light);
+            color: var(--urban-dark);
+        }
+
+        .flow-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: var(--space-lg) 0;
+        }
+
+        .flow-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .info-box {
+            background-color: var(--neutral-light);
+            padding: var(--space-lg);
+            border-radius: 8px;
+            margin-top: var(--space-lg);
+        }
+
+        .info-box h4 {
+            margin-bottom: var(--space-sm);
+            color: var(--neutral-dark);
+        }
+
+        .conclusion {
+            margin-top: var(--space-xl);
+            padding: var(--space-lg);
+            background-color: var(--neutral-light);
+            border-radius: 8px;
+        }
+
+        .conclusion h3 {
+            color: var(--neutral-dark);
+            margin-bottom: var(--space-md);
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--neutral-dark);
+            color: white;
+            padding: var(--space-lg) 0;
+            text-align: center;
+            margin-top: var(--space-xl);
+        }
+
+        footer p {
+            margin-bottom: var(--space-sm);
+        }
+
+        /* Pontos Positivos e Negativos */
+        .pros-cons {
+            margin-top: var(--space-xl);
+            padding: var(--space-lg);
+            background-color: var(--neutral-light);
+            border-radius: 8px;
+        }
+
+        .pros-cons h3 {
+            color: var(--neutral-dark);
+            margin-bottom: var(--space-lg);
+            text-align: center;
+        }
+
+        .pros-cons-container {
+            display: flex;
+            gap: var(--space-xl);
+            flex-wrap: wrap;
+        }
+
+        .pros, .cons {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .pros h4 {
+            color: var(--rural-primary);
+            margin-bottom: var(--space-md);
+            padding-bottom: var(--space-sm);
+            border-bottom: 2px solid var(--rural-primary);
+        }
+
+        .cons h4 {
+            color: var(--urban-primary);
+            margin-bottom: var(--space-md);
+            padding-bottom: var(--space-sm);
+            border-bottom: 2px solid var(--urban-primary);
+        }
+
+        .point {
+            background-color: white;
+            padding: var(--space-md);
+            margin-bottom: var(--space-md);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .point h5 {
+            margin-bottom: var(--space-sm);
+            font-size: var(--font-base);
+        }
+
+        .point p {
+            margin-bottom: 0;
+            font-size: var(--font-small);
+        }
+
+        .pros .point {
+            border-left: 3px solid var(--rural-primary);
+        }
+
+        .cons .point {
+            border-left: 3px solid var(--urban-primary);
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .columns {
+                flex-direction: column;
+            }
+            
+            .column {
+                margin-bottom: var(--space-md);
+            }
+            
+            .diagram {
+                flex-direction: column;
+                gap: var(--space-xl);
+            }
+            
+            nav ul li {
+                margin: var(--space-xs);
+            }
+
+            .pros-cons-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            :root {
+                --font-base: 0.9rem;
+                --font-small: 0.8rem;
+                --font-large: 1.1rem;
+                --font-xl: 1.3rem;
+                --font-xxl: 1.7rem;
+            }
+            
+            .content-box {
+                padding: var(--space-md);
+            }
+
+            .point {
+                padding: var(--space-sm);
+            }
+
+            .point h5 {
+                font-size: 0.9rem;
+            }
+
+            .point p {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Interdependência Econômica</h1>
+            <h2>Entre Áreas Rurais e Urbanas</h2>
+            <nav>
+                <ul>
+                    <li><a href="#conceito">Conceito</a></li>
+                    <li><a href="#interdependencia">Interdependência</a></li>
+                    <li><a href="#diagrama">Diagrama</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="conceito" class="section">
+            <div class="container">
+                <h2>O Conceito de Independência Econômica</h2>
+                <div class="content-box">
+                    <p>A <strong>independência econômica</strong> entre as áreas rurais e urbanas diz respeito à possibilidade de cada uma delas se manter economicamente sem depender da outra. Em teoria, isso significaria que:</p>
+                    <div class="columns">
+                        <div class="column rural-box">
+                            <h3>Zona Rural</h3>
+                            <p>Conseguiria produzir tudo o que precisa para sobreviver, incluindo bens industrializados e serviços.</p>
+                            <div class="icon-container">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="80" height="80" class="icon">
+                                    <style>
+                                        .rural-icon { fill: #3e8914; }
+                                        .rural-icon-light { fill: #5baa32; }
+                                    </style>
+                                    <g>
+                                        <!-- Montanhas e campo -->
+                                        <path class="rural-icon-light" d="M10,70 L30,40 L50,65 L70,35 L90,70 Z" />
+                                        
+                                        <!-- Sol -->
+                                        <circle class="rural-icon" cx="75" cy="25" r="10" />
+                                        <line x1="75" y1="10" x2="75" y2="5" stroke="#3e8914" stroke-width="2" />
+                                        <line x1="75" y1="45" x2="75" y2="40" stroke="#3e8914" stroke-width="2" />
+                                        <line x1="60" y1="25" x2="55" y2="25" stroke="#3e8914" stroke-width="2" />
+                                        <line x1="95" y1="25" x2="90" y2="25" stroke="#3e8914" stroke-width="2" />
+                                        <line x1="64" y1="14" x2="60" y2="10" stroke="#3e8914" stroke-width="2" />
+                                        <line x1="90" y1="40" x2="86" y2="36" stroke="#3e8914" stroke-width="2" />
+                                        <line x1="86" y1="14" x2="90" y2="10" stroke="#3e8914" stroke-width="2" />
+                                        <line x1="60" y1="40" x2="64" y2="36" stroke="#3e8914" stroke-width="2" />
+                                        
+                                        <!-- Árvore -->
+                                        <rect class="rural-icon" x="20" y="60" width="6" height="15" />
+                                        <circle class="rural-icon-light" cx="23" cy="50" r="10" />
+                                        
+                                        <!-- Casa de fazenda -->
+                                        <rect class="rural-icon" x="40" y="60" width="15" height="10" />
+                                        <polygon class="rural-icon" points="37,60 58,60 47.5,50" />
+                                        <rect class="rural-icon-light" x="44" y="65" width="4" height="5" />
+                                        
+                                        <!-- Trator -->
+                                        <rect class="rural-icon" x="65" y="65" width="10" height="5" />
+                                        <circle class="rural-icon-light" cx="68" cy="70" r="3" />
+                                        <circle class="rural-icon-light" cx="78" cy="70" r="5" />
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="column urban-box">
+                            <h3>Zona Urbana</h3>
+                            <p>Conseguiria suprir suas necessidades alimentares e matérias-primas sem apoio do campo.</p>
+                            <div class="icon-container">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="80" height="80" class="icon">
+                                    <style>
+                                        .urban-icon { fill: #546e7a; }
+                                        .urban-icon-light { fill: #78909c; }
+                                        .urban-icon-window { fill: #cfd8dc; }
+                                    </style>
+                                    <g>
+                                        <!-- Horizonte urbano -->
+                                        
+                                        <!-- Prédio 1 -->
+                                        <rect class="urban-icon" x="10" y="30" width="15" height="45" />
+                                        <rect class="urban-icon-window" x="13" y="35" width="3" height="3" />
+                                        <rect class="urban-icon-window" x="19" y="35" width="3" height="3" />
+                                        <rect class="urban-icon-window" x="13" y="42" width="3" height="3" />
+                                        <rect class="urban-icon-window" x="19" y="42" width="3" height="3" />
+                                        <rect class="urban-icon-window" x="13" y="49" width="3" height="3" />
+                                        <rect class="urban-icon-window" x="19" y="49" width="3" height="3" />
+                                        <rect class="urban-icon-window" x="13" y="56" width="3" height="3" />
+                                        <rect class="urban-icon-window" x="19" y="56" width="3" height="3" />
+                                        
+                                        <!-- Prédio 2 (arranha-céu) -->
+                                        <rect class="urban-icon-light" x="30" y="20" width="12" height="55" />
+                                        <rect class="urban-icon-window" x="32" y="25" width="2" height="2" />
+                                        <rect class="urban-icon-window" x="38" y="25" width="2" height="2" />
+                                        <rect class="urban-icon-window" x="32" y="31" width="2" height="2" />
+                                        <rect class="urban-icon-window" x="38" y="31" width="2" height="2" />
+                                        <rect class="urban-icon-window" x="32" y="37" width="2" height="2" />
+                                        <rect class="urban-icon-window" x="38" y="37" width="2" height="2" />
+                                        <rect class="urban-icon-window" x="32" y="43" width="2" height="2" />
+                                        <rect class="urban-icon-window" x="38" y="43" width="2" height="2" />
+                                        <rect class="urban-icon-window" x="32" y="49" width="2" height="2" />
+                                        <rect class="urban-icon-window" x="38" y="49" width="2" height="2" />
+                                        <rect class="urban-icon-window" x="32" y="55" width="2" height="2" />
+                                        <rect class="urban-icon-window" x="38" y="55" width="2" height="2" />
+                                        <rect class="urban-icon-window" x="32" y="61" width="2" height="2" />
+                                        <rect class="urban-icon-window" x="38" y="61" width="2" height="2" />
+                                        
+                                        <!-- Prédio 3 -->
+                                        <rect class="urban-icon" x="47" y="35" width="18" height="40" />
+                                        <rect class="urban-icon-window" x="50" y="40" width="4" height="4" />
+                                        <rect class="urban-icon-window" x="58" y="40" width="4" height="4" />
+                                        <rect class="urban-icon-window" x="50" y="48" width="4" height="4" />
+                                        <rect class="urban-icon-window" x="58" y="48" width="4" height="4" />
+                                        <rect class="urban-icon-window" x="50" y="56" width="4" height="4" />
+                                        <rect class="urban-icon-window" x="58" y="56" width="4" height="4" />
+                                        
+                                        <!-- Prédio 4 -->
+                                        <rect class="urban-icon-light" x="70" y="25" width="20" height="50" />
+                                        <rect class="urban-icon-window" x="74" y="30" width="4" height="4" />
+                                        <rect class="urban-icon-window" x="82" y="30" width="4" height="4" />
+                                        <rect class="urban-icon-window" x="74" y="38" width="4" height="4" />
+                                        <rect class="urban-icon-window" x="82" y="38" width="4" height="4" />
+                                        <rect class="urban-icon-window" x="74" y="46" width="4" height="4" />
+                                        <rect class="urban-icon-window" x="82" y="46" width="4" height="4" />
+                                        <rect class="urban-icon-window" x="74" y="54" width="4" height="4" />
+                                        <rect class="urban-icon-window" x="82" y="54" width="4" height="4" />
+                                        <rect class="urban-icon-window" x="74" y="62" width="4" height="4" />
+                                        <rect class="urban-icon-window" x="82" y="62" width="4" height="4" />
+                                        
+                                        <!-- Rua -->
+                                        <rect fill="#37474f" x="5" y="75" width="90" height="5" />
+                                        
+                                        <!-- Carro -->
+                                        <rect class="urban-icon" x="15" y="70" width="12" height="5" />
+                                        <circle fill="#cfd8dc" cx="18" cy="75" r="2" />
+                                        <circle fill="#cfd8dc" cx="24" cy="75" r="2" />
+                                        
+                                        <!-- Semáforo -->
+                                        <rect class="urban-icon" x="60" y="65" width="2" height="10" />
+                                        <rect class="urban-icon-light" x="59" y="60" width="4" height="6" />
+                                        <circle fill="#f44336" cx="61" cy="61" r="1" />
+                                        <circle fill="#ffeb3b" cx="61" cy="63" r="1" />
+                                        <circle fill="#4caf50" cx="61" cy="65" r="1" />
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Essa ideia está ligada ao conceito de <em>autossuficiência econômica regional</em>.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="interdependencia" class="section">
+            <div class="container">
+                <h2>Interdependência: A Realidade Prática</h2>
+                <div class="content-box">
+                    <p>Na prática, o que ocorre é uma forte <strong>interdependência</strong> entre esses dois espaços. Há uma troca constante e necessária de recursos e serviços:</p>
+
+                    <div class="tab-section">
+                        <div class="tab-header">
+                            <div class="tab-title rural-tab">O que o Campo Fornece</div>
+                        </div>
+                        
+                        <div class="tab-content">
+                            <h3>Contribuições das Áreas Rurais</h3>
+                            <ul class="feature-list">
+                                <li>Alimentos (grãos, frutas, vegetais, carnes)</li>
+                                <li>Matérias-primas para indústria (algodão, madeira, minérios)</li>
+                                <li>Produtos naturais e orgânicos</li>
+                                <li>Preservação de recursos hídricos</li>
+                                <li>Manutenção da biodiversidade</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tab-section">
+                        <div class="tab-header">
+                            <div class="tab-title urban-tab">O que a Cidade Fornece</div>
+                        </div>
+                        
+                        <div class="tab-content">
+                            <h3>Contribuições das Áreas Urbanas</h3>
+                            <ul class="feature-list">
+                                <li>Produtos industrializados</li>
+                                <li>Maquinário agrícola e fertilizantes</li>
+                                <li>Serviços financeiros e educacionais</li>
+                                <li>Mercado consumidor para produtos rurais</li>
+                                <li>Desenvolvimento tecnológico e inovação</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <p class="highlight">Essa troca constante mostra que um depende do outro para funcionar adequadamente.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="diagrama" class="section">
+            <div class="container">
+                <h2>Diagrama de Interdependência</h2>
+                <div class="content-box">
+                    <p>Observe como ocorre o fluxo de recursos e serviços entre as áreas rurais e urbanas:</p>
+                    
+
+                    
+                    <div class="diagram">
+                        <div class="rural-area">
+                            <h3>Área Rural</h3>
+                            <div class="resources">
+                                <div class="resource">Alimentos</div>
+                                <div class="resource">Matérias-primas</div>
+                                <div class="resource">Produtos naturais</div>
+                            </div>
+                        </div>
+                        
+                        <div class="urban-area">
+                            <h3>Área Urbana</h3>
+                            <div class="resources">
+                                <div class="resource">Maquinário</div>
+                                <div class="resource">Serviços</div>
+                                <div class="resource">Mercado consumidor</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>Detalhes dos Recursos</h4>
+                        <p>Área Rural: Fornece alimentos frescos, matérias-primas como madeira e algodão, produtos naturais, preservação de recursos hídricos e manutenção da biodiversidade.</p>
+                        <p>Área Urbana: Fornece produtos industrializados, maquinário agrícola, fertilizantes, serviços financeiros e educacionais, mercado consumidor para produtos rurais e desenvolvimento tecnológico.</p>
+                    </div>
+                    
+                    <div class="pros-cons">
+                        <h3>Pontos Positivos e Negativos da Independência Econômica</h3>
+                        
+                        <div class="pros-cons-container">
+                            <div class="pros">
+                                <h4>✅ PONTOS POSITIVOS:</h4>
+                                <div class="point">
+                                    <h5>AUTOSSUFICIÊNCIA LOCAL</h5>
+                                    <p>CADA REGIÃO CONSEGUIRIA PRODUZIR O QUE PRECISA, REDUZINDO DEPENDÊNCIAS EXTERNAS.</p>
+                                </div>
+                                
+                                <div class="point">
+                                    <h5>MAIOR ESTABILIDADE EM CRISES</h5>
+                                    <p>EM CASO DE PROBLEMAS DE TRANSPORTE OU POLÍTICOS, A REGIÃO NÃO FICARIA SEM RECURSOS.</p>
+                                </div>
+                                
+                                <div class="point">
+                                    <h5>ESTÍMULO AO DESENVOLVIMENTO REGIONAL</h5>
+                                    <p>INCENTIVA CADA ÁREA A FORTALECER SUA PRÓPRIA ECONOMIA, GERANDO EMPREGOS E RENDA LOCALMENTE.</p>
+                                </div>
+                                
+                                <div class="point">
+                                    <h5>VALORIZAÇÃO DE PRODUÇÕES LOCAIS</h5>
+                                    <p>FORTALECE A CULTURA E OS SABERES REGIONAIS, REDUZINDO A PADRONIZAÇÃO GLOBAL.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="cons">
+                                <h4>❌ PONTOS NEGATIVOS:</h4>
+                                <div class="point">
+                                    <h5>DIFICULDADE TÉCNICA E ESTRUTURAL</h5>
+                                    <p>NEM TODA REGIÃO TEM CONDIÇÕES CLIMÁTICAS, TECNOLÓGICAS OU ECONÔMICAS PARA PRODUZIR TUDO O QUE PRECISA.</p>
+                                </div>
+                                
+                                <div class="point">
+                                    <h5>CUSTOS MAIS ALTOS DE PRODUÇÃO</h5>
+                                    <p>A PRODUÇÃO LOCAL PODE SAIR MAIS CARA DO QUE IMPORTAR DE OUTRA REGIÃO MAIS EFICIENTE.</p>
+                                </div>
+                                
+                                <div class="point">
+                                    <h5>ISOLAMENTO ECONÔMICO</h5>
+                                    <p>REDUZIR O COMÉRCIO ENTRE REGIÕES PODE DIMINUIR O CRESCIMENTO E A INOVAÇÃO.</p>
+                                </div>
+                                
+                                <div class="point">
+                                    <h5>PERDA DE OPORTUNIDADES DE COOPERAÇÃO</h5>
+                                    <p>A INTERDEPENDÊNCIA PERMITE PARCERIAS, TROCAS DE CONHECIMENTO E DESENVOLVIMENTO CONJUNTO, QUE SERIAM LIMITADOS PELA INDEPENDÊNCIA TOTAL.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="conclusion">
+                        <h3>Impossibilidade de Independência Total</h3>
+                        <p>Pensar em uma completa independência econômica entre campo e cidade é, atualmente, <strong>inviável</strong>. As atividades econômicas modernas são extremamente especializadas e integradas. Isso significa que cada região foca no que sabe fazer melhor e, a partir daí, se conecta com outras para suprir o que falta.</p>
+                        <p>O mundo globalizado reforça ainda mais essa lógica de integração e cooperação entre diferentes regiões.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Interdependência Econômica: Áreas Rurais e Urbanas</p>
+            <p>SITE CRIADO PELO BEM DO MUNDO</p>
+        </div>
+    </footer>
+</body>
+</html>
